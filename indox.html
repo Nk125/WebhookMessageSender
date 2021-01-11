@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Webhook Messenger</title>
+        <style>
+            body {
+                font-family: Tahoma;
+                background-color: rgb(35, 39, 42);
+                color: whitesmoke;
+            }
+            #CajaW {
+                padding: 15px;
+                margin: auto;
+            }
+            .CajaV {
+                height: 200px;
+            }
+            #label {
+                font-weight: 700;
+                font-size: 20px;
+            }
+            #inputbox,#webhookurl {
+                background-color: black;
+                color: white;
+                font-family: 'Arial';
+            }
+        </style>
+  </head>
+  <body>
+<div id="CajaW">
+<div class="CajaV">
+</div>
+    <p align="center"><label for="box" id="label">Webhook Message:</label></p>
+    <p align="center"><textarea id="inputbox" name="box">Put your text</textarea></p>
+    <p align="center"><button onclick="sendMessage()">Send</button></p>
+<div class="CajaV">
+</div>
+</div>
+<script>
+$("#inputbox").on('keydown', function(e){
+    if(e.keyCode === 13 && !e.shiftKey) 
+    {
+
+          $('form').sendMessage();
+
+    }
+});
+    function sendMessage() {
+      var request = new XMLHttpRequest();
+      request.open("POST", "https://discord.com/api/webhooks/798299501717880834/avj_smjuMk2A8nLhshBaJdBWY3nAxlrNPfRyG_e8pVUUk8TeA1Dxcu7xOMg5ltukH-wo");
+
+      request.setRequestHeader('Content-type', 'application/json');
+
+      var params = {
+        username: "",
+        avatar_url: "",
+        content: document.querySelector("#inputbox").value
+      }
+
+      request.send(JSON.stringify(params));
+    }
+  </script>
+  </body>
+</html>
