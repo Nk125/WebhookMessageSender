@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--Hecho por Tide :)-->
+<html lang="es">
     <head>
         <meta charset="UTF-8"
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,7 @@
         <style>
             body {
                 font-family: Tahoma;
-                background-color: rgb(35, 39, 42);
+                background-color:darkslategray;
                 color: whitesmoke;
             }
             #CajaW {
@@ -17,7 +18,7 @@
             .CajaV {
                 height: 200px;
             }
-            #label {
+            .label {
                 font-weight: 700;
                 font-size: 20px;
             }
@@ -32,24 +33,20 @@
 <div id="CajaW">
 <div class="CajaV">
 </div>
-    <p align="center"><label for="box" id="label">Webhook Message:</label></p>
-    <p align="center"><textarea id="inputbox" name="box">Put your text</textarea></p>
-    <p align="center"><button onclick="sendMessage()">Send</button></p>
+    <p align="center"><label for="webhookurl" class="label">Añade la URL del webhook abajo</label></p>
+    <p align="center"><textarea id="webhookurl" name="webhookbox">URL del Webhook</textarea></p>
+    <p align="center"><label for="box" class="label">Mensaje:</label></p>
+    <p align="center"><textarea id="inputbox" name="box">Añade el mensaje a enviar aquí</textarea></p>
+    <p align="center"><button onclick="sendMessage()">Enviar</button></p>
 <div class="CajaV">
 </div>
 </div>
 <script>
-$("#inputbox").on('keydown', function(e){
-    if(e.keyCode === 13 && !e.shiftKey) 
-    {
-
-          $('form').sendMessage();
-
-    }
-});
     function sendMessage() {
+      var webhookurl = document.querySelector("#webhookurl").value
       var request = new XMLHttpRequest();
-      request.open("POST", "https://discord.com/api/webhooks/798299501717880834/avj_smjuMk2A8nLhshBaJdBWY3nAxlrNPfRyG_e8pVUUk8TeA1Dxcu7xOMg5ltukH-wo");
+      
+      request.open("POST", webhookurl);
 
       request.setRequestHeader('Content-type', 'application/json');
 
