@@ -80,12 +80,11 @@
       request.addEventListener("load", reqListener);
     }
     function reqListener() {
-        if ('[' + this.response + ']' == '[]') {
+        if (this.status == 204) {
             document.getElementById('response').innerHTML = 'Enviado satisfactoriamente.';
-            console.log(this.response);
         } else {
             document.getElementById('response').innerHTML = 'Revisa la URL del webhook y tu mensaje e inténtalo de nuevo.';
-            console.error(this.response);
+            console.error(this.response,this.status);
         }
     }
   </script>
