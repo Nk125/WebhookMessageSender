@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!--Hecho por Tide :)
-Tide=NK125 por cierto-->
+<!--Hecho por NK125-->
 <html lang="es">
     <head>
         <meta charset="UTF-8"
@@ -16,6 +15,8 @@ Tide=NK125 por cierto-->
                 padding: 15px;
                 margin: auto;
                 text-align: center;
+                text-decoration: none;
+                font-size: 16px;
             }
             .CajaV {
                 height: 170px;
@@ -28,6 +29,13 @@ Tide=NK125 por cierto-->
                 background-color: black;
                 color: white;
                 font-family: 'Arial';
+            }
+            #btn {
+                background-color: #FFFFFF;
+                border: none;
+                color: darkslategray;
+                padding: 5px 12px;
+                display: inline-block;
             }
         </style>
   </head>
@@ -43,7 +51,7 @@ Tide=NK125 por cierto-->
     <br>
     <textarea id="inputbox" name="box">Añade el mensaje a enviar aquí</textarea>
     <br>
-    <button onclick="sendMessage()">Enviar</button>
+    <button id="btn" onclick="sendMessage()">Enviar</button>
 <div class="CajaV">
 </div>
 </div>
