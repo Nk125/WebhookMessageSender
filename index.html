@@ -19,7 +19,7 @@
                 font-size: 16px;
             }
             .CajaV {
-                height: 170px;
+                height: 160px;
             }
             .label {
                 font-weight: 700;
@@ -39,6 +39,9 @@
                 padding: 5px 12px;
                 display: inline-block;
             }
+            #response {
+                color: beige;
+            }
         </style>
   </head>
   <body>
@@ -53,11 +56,14 @@
     <textarea id="inputbox" name="box">Añade el mensaje a enviar aquí</textarea>
     <br>
     <button id="btn" onclick="sendMessage()">Enviar</button>
+    <br>
+    <p id="response"></p>
 <div class="CajaV"></div>
 </div>
 <script>
     function sendMessage() {
-      var webhookurl = document.querySelector("#webhookurl").value
+      var webhookurl = document.querySelector("#webhookurl").value;
+      var writeoutres = 'document.getElementById("response").innerHTML';
       var request = new XMLHttpRequest();
       
       request.open("POST", webhookurl);
@@ -74,10 +80,10 @@
       var res = request.getResponseHeader(content);
       switch (res) {
           case null:
-              alert('Verifica que el webhook es correcto\ny hayas escrito un mensaje e intentalo de nuevo.');
+              document.getElementById("response").innerHTML = 'Verifica que el webhook es correcto y hayas escrito un mensaje e intentalo de nuevo.';
           break;
           default:
-              alert('Enviado: ' + res);
+              document.getElementById("response").innerHTML = 'Enviado :' + res;
           break;
       }
     }
