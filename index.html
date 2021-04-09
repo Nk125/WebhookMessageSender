@@ -15,9 +15,10 @@ Tide=NK125 por cierto-->
             #CajaW {
                 padding: 15px;
                 margin: auto;
+                text-align: center;
             }
             .CajaV {
-                height: 200px;
+                height: 170px;
             }
             .label {
                 font-weight: 700;
@@ -34,11 +35,15 @@ Tide=NK125 por cierto-->
 <div id="CajaW">
 <div class="CajaV">
 </div>
-    <p align="center"><label for="webhookurl" class="label">Añade la URL del webhook abajo</label></p>
-    <p align="center"><textarea id="webhookurl" name="webhookbox">URL del Webhook</textarea></p>
-    <p align="center"><label for="box" class="label">Mensaje:</label></p>
-    <p align="center"><textarea id="inputbox" name="box">Añade el mensaje a enviar aquí</textarea></p>
-    <p align="center"><button onclick="sendMessage()">Enviar</button></p>
+    <label for="webhookurl" class="label">Añade la URL del webhook abajo</label>
+    <br>
+    <textarea id="webhookurl" name="webhookbox">URL del Webhook</textarea>
+    <br>
+    <label for="box" class="label">Mensaje:</label>
+    <br>
+    <textarea id="inputbox" name="box">Añade el mensaje a enviar aquí</textarea>
+    <br>
+    <button onclick="sendMessage()">Enviar</button>
 <div class="CajaV">
 </div>
 </div>
@@ -58,6 +63,7 @@ Tide=NK125 por cierto-->
       }
 
       request.send(JSON.stringify(params));
+      alert('Enviado');
     }
   </script>
   </body>
