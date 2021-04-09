@@ -61,9 +61,9 @@
 <div class="CajaV"></div>
 </div>
 <script>
+    var exe = 1;
     function sendMessage() {
       var webhookurl = document.querySelector("#webhookurl").value;
-      var writeoutres = 'document.getElementById("response").innerHTML';
       var request = new XMLHttpRequest();
       
       request.open("POST", webhookurl);
@@ -75,17 +75,9 @@
         avatar_url: "",
         content: document.querySelector("#inputbox").value
       }
-
       request.send(JSON.stringify(params));
-      var res = request.getResponseHeader(content);
-      switch (res) {
-          case null:
-              document.getElementById("response").innerHTML = 'Verifica que el webhook es correcto y hayas escrito un mensaje e intentalo de nuevo.';
-          break;
-          default:
-              document.getElementById("response").innerHTML = 'Enviado :' + res;
-          break;
-      }
+      document.getElementById("response").innerHTML = 'Enviado. ' + '(' + exe + ')';
+      exe++
     }
   </script>
   </body>
