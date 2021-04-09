@@ -33,14 +33,16 @@
                 border: 1px solid gray;
             }
             #btn {
-                background-color: #FFFFFF;
+                background-color: white;
                 border: none;
                 color: darkslategray;
                 padding: 5px 12px;
                 display: inline-block;
+                transition-duration: 0.5s;
             }
-            #response {
-                color: beige;
+            #btn:hover {
+                background-color: rgba(214, 35, 35, 0.63);
+                color: white;
             }
         </style>
   </head>
@@ -49,19 +51,18 @@
 <div class="CajaV"></div>
     <label for="webhookurl" class="label">Añade la URL del webhook abajo</label>
     <br>
-    <textarea id="webhookurl" name="webhookbox">URL del Webhook</textarea>
+    <textarea id="webhookurl" name="webhookbox" placeholder="URL del Webhook"></textarea>
     <br>
     <label for="box" class="label">Mensaje:</label>
     <br>
-    <textarea id="inputbox" name="box">Añade el mensaje a enviar aquí</textarea>
+    <textarea id="inputbox" name="box" placeholder="Añade el mensaje a enviar aquí"></textarea>
     <br>
     <button id="btn" onclick="sendMessage()">Enviar</button>
     <br>
-    <p id="response"></p>
+    <p id="response" style="color: beige;"></p>
 <div class="CajaV"></div>
 </div>
 <script>
-    var exe = 1;
     function sendMessage() {
       var webhookurl = document.querySelector("#webhookurl").value;
       var request = new XMLHttpRequest();
@@ -76,8 +77,14 @@
         content: document.querySelector("#inputbox").value
       }
       request.send(JSON.stringify(params));
-      document.getElementById("response").innerHTML = 'Enviado. ' + '(' + exe + ')';
-      exe++
+      request.addEventListener("load", reqListener);
+    }
+    function reqListener() {
+        if ('[' + this.response + ']' == '[]') {
+            document.getElementById('response').innerHTML = 'Enviado satisfactoriamente.';
+        } else {
+            document.getElementById('response').innerHTML = 'Revisa la URL del webhook y tu mensaje e inténtalo de nuevo.';
+        }
     }
   </script>
   </body>
